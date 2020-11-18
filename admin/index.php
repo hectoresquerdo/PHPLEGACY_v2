@@ -25,8 +25,12 @@
                 $_SESSION['nombre'] = $row['username'];
                 $_SESSION['id'] = $row['id_user_admin'];
                
-
-               header("Location: principal.php");
+                if($user == "admin"){
+                    header("Location: adminpanel.php");
+                }else{
+                    header("Location: userpage.php");
+                }
+               
                 
         }else{
             echo "No existe usuario";

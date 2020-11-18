@@ -35,8 +35,8 @@
           <div>
             <br></br>
             
-            <form action="http://localhost/phpcalendar/admin/principal.php">
-              <input type="submit" value="Return to panel" />
+            <form action="http://localhost/phpcalendar/admin/userpage.php">
+              <input type="submit" value="Return" />
             </form> 
             <div class="row">
                 <div class="col"></div>

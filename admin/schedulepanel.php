@@ -19,6 +19,84 @@
         echo "Conexion mala ".$e->getMessage();
     }
 
+   //Variables Schedule
+    $id_class=(isset($_POST['id_class']))?$_POST['id_class']:"";
+    $time_start=(isset($_POST['time_start']))?$_POST['time_start']:"";
+    $time_end=(isset($_POST['time_end']))?$_POST['time_end']:"";
+    $day=(isset($_POST['day']))?$_POST['day']:"";
+    $course=(isset($_POST['course']))?$_POST['course']:"";
+    $colour=(isset($_POST['colour']))?$_POST['colour']:"";
+    $teacher=(isset($_POST['teacher']))?$_POST['teacher']:"";
+
+    $action=(isset($_POST['action']))?$_POST['action']:"";
+    
+
+    switch($action){
+        case "btnAdd":
+
+            $sentencia=$pdo->prepare("INSERT INTO schedule (id_class,time_start,time_end,day,course,colour,teacher) 
+            VALUES (:id_class,:time_start,:time_end,:day,:course,:colour,:teacher)");
+
+            
+            $sentencia->bindParam(':id_class', $id_class);
+            $sentencia->bindParam(':time_start', $time_start);
+            $sentencia->bindParam(':time_end', $time_end);
+            $sentencia->bindParam(':day', $day);
+            $sentencia->bindParam(':course', $course);
+            $sentencia->bindParam(':colour', $colour);
+            $sentencia->bindParam(':teacher', $teacher);
+            $sentencia->execute();
+
+            header("Location: schedulepanel.php");
+
+                    
+        break;
+        case "btnModify":
+
+            $sentencia=$pdo->prepare("UPDATE schedule SET 
+            id_class=:id_class,
+            time_start=:time_start,
+            time_end=:time_end,
+            day=:day,
+            course=:course,
+            colour=:colour,
+            teacher=:teacher WHERE id_class=:id_class");
+            
+            
+            $sentencia->bindParam(':id_class', $id_class);
+            $sentencia->bindParam(':time_start', $time_start);
+            $sentencia->bindParam(':time_end', $time_end);
+            $sentencia->bindParam(':day', $day);
+            $sentencia->bindParam(':course', $course);
+            $sentencia->bindParam(':colour', $colour);
+            $sentencia->bindParam(':teacher', $teacher);
+            
+            $sentencia->execute();
+            header("Location: schedulepanel.php");
+
+            
+        break;
+        case "btnDelete":
+            
+            $sentencia=$pdo->prepare("DELETE FROM schedule WHERE id_class=:id_class");
+           
+            
+            $sentencia->bindParam(':id_class', $id_class);
+         
+            
+            $sentencia->execute();
+
+            header("Location: schedulepanel.php");
+
+            
+        
+    }
+    $sentencia= $pdo->prepare("SELECT * FROM `schedule`");
+    $sentencia->execute();
+
+    $listaSchedule=$sentencia->fetchAll(PDO::FETCH_ASSOC);
+  
+    
 
 ?>
 
@@ -61,7 +139,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" >
                 
                 <div class="sidebar-brand-text mx-3">Admin PHP-Legacy</div>
             </a>
@@ -70,9 +148,9 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <?php if($nombre == "admin") { ?>
+            <?php if($usuario == 0) { ?>
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="http://localhost/phpcalendar/admin/adminpanel.php"">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Admin Panel</span></a>
             </li>
@@ -91,7 +169,7 @@
                        
                         
                         <a class="collapse-item" href="http://localhost/phpcalendar/">Calendar</a>
-                        <a class="collapse-item" href="http://localhost/phpcalendar/admin/userpage.php">User Configuration</a>
+                        <a class="collapse-item" href="blank.html">Settings</a>
                     </div>
                 </div>
             </li>
@@ -179,64 +257,122 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                
-                <div class="row">
+                <div class="container-fluid">
+<!-- Tabla Schedule -->
+                <h1>Schedule</h1>
 
-                        <!-- Schedule -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"> <form action="schedulepanel.php">
-                                                <input type="submit" class="btn btn-success btn-icon-split" value="Schedule Configuration" />
-                                                </form></div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Courses -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"> <form action="coursespanel.php">
-                                                <input type="submit" class="btn btn-success btn-icon-split" value="Courses Configuration" />
-                                                </form></div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                <!-- Teachers -->
-                <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"> <form action="teacherpanel.php">
-                                                <input type="submit" class="btn btn-success btn-icon-split" value="Teachers Configuration" />
-                                                </form></div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <form action="" method="post" extype="multipart/form-data" >
                
-             <!-- End of Main Content -->
 
-            
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Schedule</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+          <label for="">id_class:</label>
+                    <input type="text" class="form-control" name="id_class" value="<?php echo $id_class;?>" placeholder="" id="txt1" require="">
+                    <br>
+
+                    <label for="">time_start:</label>
+                    <input type="datetime-local" class="form-control"  name="time_start" value="<?php echo $time_start;?>" placeholder="" id="txt2" require="">
+                    <br>
+
+                    <label for="">time_end:</label>
+                    <input type="datetime-local" class="form-control"  name="time_end" value="<?php echo $time_end;?>" placeholder="" id="txt3" require="">
+                    <br>
+
+                    <label for="">day:</label>
+                    <input type="date" class="form-control"  name="day" placeholder="" value="<?php echo $day;?>" id="txt4" require="">
+                    <br>
+                    <label for="">course:</label>
+                    <input type="text" class="form-control"  name="course" placeholder="" value="<?php echo $course;?>" id="txt5" require="">
+                    <br>
+                    <label for="">colour:</label>
+                    <input type="color" class="form-control"  name="colour" placeholder="" value="<?php echo $colour;?>" id="txt6" require="">
+                    <br>
+                    <label for="">teacher:</label>
+                    <input type="number" class="form-control"  name="teacher" placeholder="" value="<?php echo $teacher;?>" id="txt7" require="">
+                    <br>
+            </div>
+       
+      </div>
+      <div class="modal-footer">
+                    <button value="btnAdd" class="btn btn-success" type="submit" name="action">Add</button>
+                    <button value="btnModify" class="btn btn-success" type="submit" name="action">Modify</button>
+                    <button value="btnDelete"  class="btn btn-primary" type="submit" name="action">Delete</button>
+                    
+      </div>
+      
+    </div>
+  </div>
+</div>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Modify schedule
+</button>
+
+                    
+                  
+                   
+
+                </form>
+            <div class="row">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Class</th>
+                            <th>Start</th>
+                            <th>End</th>
+                            <th>Course</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                <?php foreach($listaSchedule as $schedule){ ?>
+                    <tr>
+                        <td><?php echo $schedule['id_class'];?></td>
+                        <td><?php echo $schedule['time_start'];?></td>
+                        <td><?php echo $schedule['time_end'];?></td>
+                        <td><?php echo $schedule['course'];?></td>
+                        <td>
+                        <form action="" method="post">
+                            <input type="hidden" name="id_schedule" value="<?php echo $schedule['id_schedule'];?>">
+                            <input type="hidden" name="id_class" value="<?php echo $schedule['id_class'];?>">
+                            <input type="hidden" name="time_start" value="<?php echo $schedule['time_start'];?>">
+                            <input type="hidden" name="time_end" value="<?php echo $schedule['time_end'];?>">
+                            <input type="hidden" name="day" value="<?php echo $schedule['day'];?>">
+                            <input type="hidden" name="course" value="<?php echo $schedule['course'];?>">
+                            <input type="hidden" name="colour" value="<?php echo $schedule['colour'];?>">
+                            <input type="hidden" name="teacher" value="<?php echo $schedule['teacher'];?>">
+
+                           
+                            <input type="submit" class="btn btn-primary" value="Select" name="action">
+                            <button value="btnDelete"  class="btn btn-primary" type="submit" name="action">Delete</button>
+                        </form>
+                        </td>
+                    </tr>
+                <?php }?>
+                </table>
+            </div>
+
+        </div>
+
+
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; PHP-LEGACY</span>
+                    </div>
+                </div>
+            </footer>
             <!-- End of Footer -->
 
         </div>

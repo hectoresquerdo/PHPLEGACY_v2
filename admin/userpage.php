@@ -1,24 +1,62 @@
 <?php
+   
     session_start();
+    require "conexion.php";
 
-    if(!isset($_SESSION['id'])){
-        header("Location: index.php");
-    }
-    
     $nombre = $_SESSION['nombre'];
     $usuario = $_SESSION['id'];
 
-    $servidor="mysql:dbname=php;host=127.0.0.1";
-    $usuario="root";
-    $password="";
+    //Variables User
+    $id_user_admin=(isset($_POST['id_user_admin']))?$_POST['id_user_admin']:"";
+    $username=(isset($_POST['username']))?$_POST['username']:"";
+    $name=(isset($_POST['name']))?$_POST['name']:"";
+    $email=(isset($_POST['email']))?$_POST['email']:"";
+    $password=(isset($_POST['password']))?$password['password']:"";
+    
+    $pass_c = sha1($password);
 
-    try{
-        $pdo = new PDO($servidor, $usuario, $password);
+
+
+    $action=(isset($_POST['action']))?$_POST['action']:"";
+    
+
+    switch($action){
+       
+        case "btnModify":
+
+            $sentencia=$pdo->prepare("UPDATE users_admin SET 
+            id_user_admin=:id_user_admin,
+            username=:username,
+            name=:name,
+            email=:email,
+            password=:password
+           
+            WHERE id_user_admin=:id_user_admin");
+            
+            
+            $sentencia->bindParam(':id_user_admin', $id_user_admin);
+            $sentencia->bindParam(':username', $username);
+            $sentencia->bindParam(':name', $name);
+            $sentencia->bindParam(':email', $email);
+            $sentencia->bindParam(':password', $pass_c);
+            
+                       
+            $sentencia->execute();
+            header("Location: userpage.php");
+
+            
+        break;
         
-    }catch(PDOException $e){
-        echo "Conexion mala ".$e->getMessage();
+                
     }
+        $sentencia= $pdo->prepare("SELECT * FROM `users_admin` WHERE id_user_admin=$usuario");
+        
+        $sentencia->execute();
 
+        $listaSchedule=$sentencia->fetchAll(PDO::FETCH_ASSOC);
+  
+  
+    
 
 ?>
 
@@ -61,7 +99,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" >
                 
                 <div class="sidebar-brand-text mx-3">Admin PHP-Legacy</div>
             </a>
@@ -70,9 +108,9 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <?php if($nombre == "admin") { ?>
+            <?php if($usuario == "admin") { ?>
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="http://localhost/phpcalendar/admin/adminpanel.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Admin Panel</span></a>
             </li>
@@ -90,7 +128,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                        
                         
-                        <a class="collapse-item" href="http://localhost/phpcalendar/">Calendar</a>
+                        <a class="collapse-item" href="http://localhost/phpcalendar/assets/calendar.php">Calendar</a>
                         <a class="collapse-item" href="http://localhost/phpcalendar/admin/userpage.php">User Configuration</a>
                     </div>
                 </div>
@@ -154,7 +192,7 @@
                    
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                            <a class="nav-link dropdown-toggle"  href="http://localhost/phpcalendar/admin/login.php" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $nombre ?></span>
                                 <img class="img-profile rounded-circle"
@@ -166,7 +204,7 @@
                                
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="http://localhost/phpcalendar/admin/login.php" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -179,64 +217,115 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                
-                <div class="row">
+                <div class="container-fluid">
+<!-- Tabla Schedule -->
+                <h1>User Configuration</h1>
 
-                        <!-- Schedule -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"> <form action="schedulepanel.php">
-                                                <input type="submit" class="btn btn-success btn-icon-split" value="Schedule Configuration" />
-                                                </form></div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Courses -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"> <form action="coursespanel.php">
-                                                <input type="submit" class="btn btn-success btn-icon-split" value="Courses Configuration" />
-                                                </form></div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                <!-- Teachers -->
-                <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"> <form action="teacherpanel.php">
-                                                <input type="submit" class="btn btn-success btn-icon-split" value="Teachers Configuration" />
-                                                </form></div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <form action="" method="post" extype="multipart/form-data" >
                
-             <!-- End of Main Content -->
 
-            
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">User configuration</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+                    <label for="">id_user_admin:</label>
+                    <input type="number" class="form-control" name="id_user_admin" value="<?php echo $id_user_admin;?>" placeholder="" id="txt1" require="">
+                    <br>
+
+                    <label for="">username:</label>
+                    <input type="text" class="form-control"  name="username" value="<?php echo $username;?>" placeholder="" id="txt2" require="">
+                    <br>
+
+                    <label for="">name:</label>
+                    <input type="text" class="form-control"  name="name" value="<?php echo $name;?>" placeholder="" id="txt3" require="">
+                    <br>
+
+                    <label for="">email:</label>
+                    <input type="text" class="form-control"  name="email" placeholder="" value="<?php echo $email;?>" id="txt4" require="">
+                    <br>
+                    <label for="">password:</label>
+                    <input type="text" class="form-control"  name="password" placeholder="" value="<?php echo $pass_c;?>" id="txt5" require="">
+                    <br>
+                   
+                   
+            </div>
+       
+      </div>
+      <div class="modal-footer">
+                   
+                    <button value="btnModify" class="btn btn-success" type="submit" name="action">Modify</button>
+                   
+                    
+      </div>
+      
+    </div>
+  </div>
+</div>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Modify User Configuration
+</button>
+
+                    
+                  
+                   
+
+                </form>
+            <div class="row">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id_user</th>
+                            <th>Username</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Select modification</th>
+                        </tr>
+                    </thead>
+                    <?php foreach($listaSchedule as $schedule){ ?>
+                    <tr>
+                        <td><?php echo $schedule['id_user_admin'];?></td>
+                        <td><?php echo $schedule['username'];?></td>
+                        <td><?php echo $schedule['name'];?></td>
+                        <td><?php echo $schedule['email'];?></td>
+                       
+                        <td>
+                        <form action="" method="post">
+                            <input type="hidden" name="id_user_admin" value="<?php echo $schedule['id_user_admin'];?>">
+                            <input type="hidden" name="username" value="<?php echo $schedule['username'];?>">
+                            <input type="hidden" name="name" value="<?php echo $schedule['name'];?>">
+                            <input type="hidden" name="email" value="<?php echo $schedule['email'];?>">
+                                                     
+                           
+                            <input type="submit" class="btn btn-primary" value="Select" name="action">
+                            
+                        </form>
+                        </td>
+                    </tr>
+                <?php }?>
+                </table>
+            </div>
+
+        </div>
+
+
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; PHP-LEGACY</span>
+                    </div>
+                </div>
+            </footer>
             <!-- End of Footer -->
 
         </div>

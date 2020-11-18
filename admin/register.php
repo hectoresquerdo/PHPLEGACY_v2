@@ -7,6 +7,7 @@
     $username=(isset($_POST['username']))?$_POST['username']:"";
     $name=(isset($_POST['name']))?$_POST['name']:"";
     $email=(isset($_POST['email']))?$_POST['email']:"";
+    $course=(isset($_POST['course']))?$_POST['course']:"";
     $password=(isset($_POST['password']))?$_POST['password']:"";
     $password2=(isset($_POST['password2']))?$_POST['password2']:"";
     $action=(isset($_POST['action']))?$_POST['action']:"";
@@ -30,6 +31,7 @@
             if($pass_c == $pass_2){
                 
                 $sentencia->execute();  
+                
                 header("Location: index.php");
             }else{
                 echo "The two passwords are differente, try again!";
