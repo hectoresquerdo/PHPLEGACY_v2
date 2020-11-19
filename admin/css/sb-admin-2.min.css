@@ -552,6 +552,11 @@ pre code {
   margin-right: -0.75rem;
   margin-left: -0.75rem;
 }
+
+.login {
+  width: 600px;
+  display: flex;
+}
 .no-gutters {
   margin-right: 0;
   margin-left: 0;

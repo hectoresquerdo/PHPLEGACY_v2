@@ -66,60 +66,64 @@
 
 <body class="bg-gradient-primary">
 
-    <div class="container">
-    <form action="" method="post" extype="multipart/form-data" > 
-        <div class="card o-hidden border-0 shadow-lg my-5">
-            <div class="card-body p-0">
-                <!-- Nested Row within Card Body -->
-                <div class="row">
-                    <!--<div class="col-lg-5 d-none d-lg-block bg-register-image"></div>-->
-                    <div class="col-lg-7">
-                        <div class="p-5">
-                            <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
-                            </div>
-                            <form method="post" action="register.php" class="user">
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user"  name="username" 
-                                            placeholder="username">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user"  name="name" id="exampleLastName"
-                                            placeholder="name">
+    <div class="d-flex justify-content-center">
+
+                <form action="" method="post" extype="multipart/form-data" > 
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                        <div class="card-body p-0">
+                            <!-- Nested Row within Card Body -->
+                            <div class="row justify-content-center">
+                                <!--<div class="col-lg-5 d-none d-lg-block bg-register-image"></div>-->
+                                <div class="col-lg-6.5">
+                                    <div class="p-5">
+                                        <div class="text-center">
+                                            <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                                        </div>
+                                        <form method="post" action="register.php" class="user">
+                                            <div class="form-group row">
+                                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                                    <input type="text" class="form-control form-control-user"  name="username" 
+                                                        placeholder="username">
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control form-control-user"  name="name" id="exampleLastName"
+                                                        placeholder="name">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="email" class="form-control form-control-user"  name="email" id="exampleInputEmail"
+                                                    placeholder="Email Address">
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                                    <input type="password" class="form-control form-control-user"
+                                                        id="exampleInputPassword" name="password"  placeholder="Password">
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input type="password" class="form-control form-control-user"
+                                                        id="exampleRepeatPassword"  name="password2" placeholder="Repeat Password">
+                                                </div>
+                                            </div>
+                                            <form action="" method="post">
+                                                <input type="submit" value="register" name="action" class="btn btn-primary btn-user btn-block"/>
+                                            </form>
+                                            <hr>
+                                
+                                        </form>
+                                        <hr>
+                                        
+                                        <div class="text-center">
+                                            <a class="small" href="index.php">Already have an account? Login!</a>
+                                        </div>
+
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control form-control-user"  name="email" id="exampleInputEmail"
-                                        placeholder="Email Address">
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" name="password"  placeholder="Password">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword"  name="password2" placeholder="Repeat Password">
-                                    </div>
-                                </div>
-                                <form action="" method="post">
-                                <input type="submit" value="register" name="action" class="btn btn-primary btn-user btn-block"/>
-                                 </form>
-                                <hr>
-                               
-                            </form>
-                            <hr>
-                            
-                            <div class="text-center">
-                                <a class="small" href="index.php">Already have an account? Login!</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </form>
+        </form>
     </div>
 
     <!-- Bootstrap core JavaScript-->
