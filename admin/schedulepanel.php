@@ -150,7 +150,7 @@
             <!-- Nav Item - Dashboard -->
             <?php if($usuario == 0) { ?>
             <li class="nav-item active">
-                <a class="nav-link" href="http://localhost/phpcalendar/admin/adminpanel.php"">
+                <a class="nav-link" href="http://localhost/phpcalendar/admin/adminpanel.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Admin Panel</span></a>
             </li>
@@ -168,8 +168,8 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                        
                         
-                        <a class="collapse-item" href="http://localhost/phpcalendar/">Calendar</a>
-                        <a class="collapse-item" href="blank.html">Settings</a>
+                        <a class="collapse-item" href="http://localhost/phpcalendar/assets/calendar.php">Calendar</a>
+                        <a class="collapse-item" href="http://localhost/phpcalendar/admin/userpage.php">User configuration</a>
                     </div>
                 </div>
             </li>

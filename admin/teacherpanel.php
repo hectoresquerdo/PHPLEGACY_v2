@@ -172,8 +172,8 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                        
                         
-                        <a class="collapse-item" href="http://localhost/phpcalendar/">Calendar</a>
-                        <a class="collapse-item" href="blank.html">Settings</a>
+                        <a class="collapse-item" href="http://localhost/phpcalendar/assets/calendar.php">Calendar</a>
+                        <a class="collapse-item" href="http://localhost/phpcalendar/admin/userpage.php">User settings</a>
                     </div>
                 </div>
             </li>
@@ -319,9 +319,6 @@
   Modify Teachers
 </button>
 
-                    
-                  
-                   
 
                 </form>
             <div class="row">

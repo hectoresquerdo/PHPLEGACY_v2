@@ -1,7 +1,16 @@
 <?php
+
+    session_start();
+
+    $nombre = $_SESSION['nombre'];
+    $usuario = $_SESSION['id'];
+
+
     try{
      $pdo=new PDO("mysql:dbname=php;host=localhost","root","");
      $sth= $pdo->query('SELECT * FROM schedule');
+
+     $curso= $pdo->query('SELECT course FROM schedule');
           
     }catch(PDOException $e){
         echo "No conectado";
@@ -31,13 +40,21 @@
 
     </head>
     <body>
-        <div class="container">
+        <div class="calendar-container">
           <div>
             <br></br>
+
+            <?php if($nombre == "admin") { ?>
+                 <form action="http://localhost/phpcalendar/admin/adminpanel.php">
+                     <input type="submit" value="Return" />
+                </form> 
+            <?php } ?>
+            <?php if($nombre !== "admin") { ?>
+                 <form action="http://localhost/phpcalendar/admin/userpage.php">
+                     <input type="submit" value="Return" />
+                </form> 
+            <?php } ?>
             
-            <form action="http://localhost/phpcalendar/admin/userpage.php">
-              <input type="submit" value="Return" />
-            </form> 
             <div class="row">
                 <div class="col"></div>
                 <div class="col-7"><div id="CalendarioWeb"></div></div>
@@ -49,7 +66,7 @@
     <script>
         $(document).ready(function(){
             $('#CalendarioWeb').fullCalendar({
-                locale: 'es',
+                
                 header:{
                     left:'today, prev, next',
                     center:'title',
@@ -78,10 +95,8 @@
                                 color:"<?php echo $fila["colour"];?>",
                                 
                              },
-                             <?php
-                        }
-                                  
-                        ?>]
+                     <?php }?>
+                             ]
 
             });
         });

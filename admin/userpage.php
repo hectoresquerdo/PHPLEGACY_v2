@@ -108,7 +108,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <?php if($usuario == "admin") { ?>
+            <?php if($nombre == "admin") { ?>
             <li class="nav-item active">
                 <a class="nav-link" href="http://localhost/phpcalendar/admin/adminpanel.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -127,9 +127,10 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                        
-                        
                         <a class="collapse-item" href="http://localhost/phpcalendar/assets/calendar.php">Calendar</a>
                         <a class="collapse-item" href="http://localhost/phpcalendar/admin/userpage.php">User Configuration</a>
+                      
+            
                     </div>
                 </div>
             </li>

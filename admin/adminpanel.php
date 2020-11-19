@@ -61,7 +61,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" >
                 
                 <div class="sidebar-brand-text mx-3">Admin PHP-Legacy</div>
             </a>
@@ -72,7 +72,7 @@
             <!-- Nav Item - Dashboard -->
             <?php if($nombre == "admin") { ?>
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="http://localhost/phpcalendar/admin/adminpanel.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Admin Panel</span></a>
             </li>
@@ -90,7 +90,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                        
                         
-                        <a class="collapse-item" href="http://localhost/phpcalendar/">Calendar</a>
+                        <a class="collapse-item" href="http://localhost/phpcalendar/assets/calendar.php">Calendar</a>
                         <a class="collapse-item" href="http://localhost/phpcalendar/admin/userpage.php">User Configuration</a>
                     </div>
                 </div>
@@ -181,7 +181,12 @@
                 <!-- Begin Page Content -->
                 
                 <div class="row">
-
+                        <div class="card border-left-primary shadow h-100 py-2">    
+                            <div>  
+                                <div class="card border-left-primary shadow h-100 py-2">
+                                </div>
+                            </div>
+                        </div>
                         <!-- Schedule -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
