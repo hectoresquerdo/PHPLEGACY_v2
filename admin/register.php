@@ -88,30 +88,30 @@
                                             <div class="form-group row">
                                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                                     <input type="text" class="form-control form-control-user"  name="username" 
-                                                        placeholder="username">
+                                                        placeholder="username" required>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <input type="text" class="form-control form-control-user"  name="name" id="exampleLastName"
-                                                        placeholder="name">
+                                                        placeholder="name" required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <input type="email" class="form-control form-control-user"  name="email" id="exampleInputEmail"
-                                                    placeholder="Email Address">
+                                                    placeholder="Email Address" required>
                                             </div>
                                             <div class="form-group row">
                                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                                     <input type="password" class="form-control form-control-user"
-                                                        id="exampleInputPassword" name="password"  placeholder="Password">
+                                                        id="exampleInputPassword" name="password"  placeholder="Password" required>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <input type="password" class="form-control form-control-user"
-                                                        id="exampleRepeatPassword"  name="password2" placeholder="Repeat Password">
+                                                        id="exampleRepeatPassword"  name="password2" placeholder="Repeat Password" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                    <input list="browsers" class="form-control form-control-user" name="course" id="exampleInputEmail" placeholder="Course">
+                                                    <input list="browsers" class="form-control form-control-user" name="course" id="exampleInputEmail" placeholder="Course" required>
 
                                                     <datalist id="browsers">
                                                     <option value="WEB">

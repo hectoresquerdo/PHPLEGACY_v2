@@ -316,6 +316,8 @@
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Modify schedule
 </button>
+<p>Please push select to modify Schedule. 
+</p>
 
                     
                   

@@ -318,6 +318,8 @@
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Modify Teachers
 </button>
+<p>Please push select to modify Teacher. 
+</p>
 
 
                 </form>
