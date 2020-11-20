@@ -1,17 +1,49 @@
 <?php
 
     session_start();
+    
 
     $nombre = $_SESSION['nombre'];
     $usuario = $_SESSION['id'];
 
+    $mysqli = new mysqli("localhost","root","","php");
 
+    $WEB= $mysqli->query('SELECT * FROM `schedule` WHERE course="WEB"');
+    $DAM= $mysqli->query('SELECT * FROM `schedule` WHERE course="WEB"');
+
+    $sql = "SELECT course FROM `users_admin` WHERE username='$nombre'";
+        
+    $result = $mysqli->query($sql);
+
+    if ($result->num_rows > 0) {
+        
+        while($row = $result->fetch_assoc()) {
+            
+            $userCourse = $row["course"];
+                    
+         
+            if($userCourse == "ALL"){
+                $COURSE= $mysqli->query('SELECT * FROM `schedule`');
+              
+            }
+            if($userCourse == "WEB"){
+                $COURSE= $mysqli->query('SELECT * FROM `schedule` WHERE course="WEB"');
+            }
+            if($userCourse == "DAM"){
+                $COURSE= $mysqli->query('SELECT * FROM `schedule` WHERE course="DAM"');
+            }
+            
+            
+        }
+      } else {
+        echo "0 results";
+      }
+      
+    
     try{
-     $pdo=new PDO("mysql:dbname=php;host=localhost","root","");
-     $sth= $pdo->query('SELECT * FROM schedule');
-
-     $curso= $pdo->query('SELECT course FROM schedule');
-          
+         $sth=$COURSE;  
+        
+                    
     }catch(PDOException $e){
         echo "No conectado";
     }
@@ -44,17 +76,7 @@
           <div>
             <br></br>
 
-            <?php if($nombre == "admin") { ?>
-                 <form action="http://localhost/phpcalendar/admin/adminpanel.php">
-                     <input type="submit" value="Return" />
-                </form> 
-            <?php } ?>
-            <?php if($nombre !== "admin") { ?>
-                 <form action="http://localhost/phpcalendar/admin/userpage.php">
-                     <input type="submit" value="Return" />
-                </form> 
-            <?php } ?>
-            
+                       
             <div class="row">
                 <div class="col"></div>
                 <div class="col-7"><div id="CalendarioWeb"></div></div>
@@ -68,11 +90,19 @@
             $('#CalendarioWeb').fullCalendar({
                 
                 header:{
-                    left:'today, prev, next',
+                    left:'today, prev, next, MiBoton',
                     center:'title',
                     right:'month,basicWeek, basicDay,agendaWeek,agendaDay'
                 },
-                
+                customButtons:{
+                    MiBoton:{
+                        text:'Return',
+                        click:function(event, jsEvent, view){
+                            window.location.href = 'https://localhost/phpcalendar/admin/userpage.php';
+                        }
+                        
+                    }
+                },
                 dayClick:function(date,jsEvent,view){
                     alert("Valor seleccionado: "+date.format());
                     alert("Vista actual: "+view.name);

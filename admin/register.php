@@ -34,10 +34,11 @@
             if($pass_c == $pass_2){
                 
                 $sentencia->execute();  
+
                 
                 header("Location: index.php");
             }else{
-                echo '<script>alert("The two passwords are differente, try again!")</script>'; 
+                echo '<script>alert("The two passwords are different, try again!")</script>'; 
                
             }
         }

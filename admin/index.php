@@ -21,7 +21,7 @@
 
             $pass_c = sha1($password);
 
-            if($password_bd == $pass_c){
+            if($password_bd == $pass_c){    
                 $_SESSION['nombre'] = $row['username'];
                 $_SESSION['id'] = $row['id_user_admin'];
                
@@ -29,14 +29,16 @@
                     header("Location: adminpanel.php");
                 }else{
                     header("Location: userpage.php");
-                }
+                };
                
                 
-        }else{
-            echo "No existe usuario";
+                 
         }
+    }else{
+        echo '<script>alert("This user does not exsits")</script>'; 
+
     }
-    }
+}
 ?>
 
 <!DOCTYPE html>
