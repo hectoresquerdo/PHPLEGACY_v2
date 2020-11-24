@@ -270,9 +270,11 @@
     </div>
   </div>
 </div>
+<div class="row m-2"> </div>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Modify User Configuration
 </button>
+<div class="row m-2"> </div>
 <p>Please push select to modify User Configuration. 
 </p>
 
@@ -308,7 +310,7 @@
                             <input type="hidden" name="email" value="<?php echo $schedule['email'];?>">
                                                      
                            
-                            <input type="submit" class="btn btn-primary" value="Select" name="action">
+                            <input type="submit justify-content-center" class="btn btn-primary" value="Select" name="action">
                             
                         </form>
                         </td>
