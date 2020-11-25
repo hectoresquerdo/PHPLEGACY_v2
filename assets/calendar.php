@@ -26,8 +26,8 @@
                 $COURSE= $mysqli->query('SELECT * FROM `schedule`');
               
             }
-            if($userCourse == "WEB"){
-                $COURSE= $mysqli->query('SELECT * FROM `schedule` WHERE course="WEB"');
+            if($userCourse == "DAW"){
+                $COURSE= $mysqli->query('SELECT * FROM `schedule` WHERE course="DAW"');
             }
             if($userCourse == "DAM"){
                 $COURSE= $mysqli->query('SELECT * FROM `schedule` WHERE course="DAM"');
