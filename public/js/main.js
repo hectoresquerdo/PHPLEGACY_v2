@@ -118,7 +118,7 @@
             $.ajax(
                 {
                    type:"POST",
-                   url: $url_+action,
+                   url: url_+action,
                    data:objEvent,
                    success:function(msg){
 

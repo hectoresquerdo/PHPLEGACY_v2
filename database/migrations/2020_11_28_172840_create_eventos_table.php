@@ -17,7 +17,7 @@ class CreateEventosTable extends Migration
             $table->id();
 
             $table->string('title', 255);
-            $table->text('description');
+            $table->text('description')->nullable();
 
             $table->string('color', 20);
             $table->string('textColor', 20);

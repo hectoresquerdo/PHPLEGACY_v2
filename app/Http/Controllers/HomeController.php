@@ -14,6 +14,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('soloadmin', ['only'=> 'index']);
     }
 
     /**
@@ -25,4 +26,17 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function getTeacher(){
+
+        return view ('teacher');
+    }
+    public function getUserDAM(){
+
+        return view ('userDAM');
+    }
+    public function getUserDAW(){
+
+        return view ('userDAW');
+    }
+
 }
