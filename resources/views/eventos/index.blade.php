@@ -13,7 +13,6 @@
     <script src="{{ asset('js/main.js') }}" defer></script>
 
 @endsection
-
 @section('content')
 
 <div class="row">
