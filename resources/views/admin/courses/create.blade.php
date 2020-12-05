@@ -17,36 +17,40 @@ $(document).ready(function() {
 @stop
 
     @section('content_header')
-    <h1>Course Section
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-create-category">
-        Crear
-    </button>
-</h1>
+    <h1>Course Section: Create and modify Courses </h1>
 @stop
 
 
 @section('content')
-    <p>Create and modify Courses</p>
 
 
-    <form action="{{ url('/admin') }}" method="post" enctype="multiplart/form-data">
+    <form action="{{ url('/admin/courses') }}" method="post" enctype="multiplart/form-data">
 {{ csrf_field() }}
-   <label for="name">{{'Name'}}</label>
-   <input type="text" name="name" id="name" value="">
-   </br>
-     <label for="description">{{'Description'}}</label>
-   <input  type="text" name="description" id="description" value="">
-   </br>
-     <label for="date_start">{{'Date start'}}</label>
-   <input  type="date" name="date_start" id="date_start" value="">
-   </br>
-     <label for="date_end">{{'Date end'}}</label>
-   <input type="date" name="date_end" id="date_end" value="">
-   </br>
-     <label for="active">{{'Active'}}</label>
-   <input  type="text" name="Active" id="Active" value="">
-   </br>
-   <input type="submit" value="Add">
+        <div class="form-group">
+            <label class="control-label" for="name">{{'Name'}}</label>
+            <input class="form-control" type="text" name="name" id="name" value="">
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="description">{{'Description'}}</label>
+            <input class="form-control" type="text" name="description" id="description" value="">
+        </div>
+
+         <div class="form-group">
+            <label class="control-label" for="date_start">{{'Date start'}}</label>
+            <input class="form-control" type="date" name="date_start" id="date_start" value="" required>
+        </div>
+
+         <div class="form-group">
+            <label class="control-label" for="date_end">{{'Date end'}}</label>
+            <input class="form-control" type="date" name="date_end" id="date_end" value="" required>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="active">{{'Active'}}</label>
+            <input class="form-control" type="text" name="Active" id="Active" value="">
+        </div>
+       <input class="btn btn-secondary" type="submit" value="Add">
 </form>
 
  </br>
@@ -85,10 +89,10 @@ $(document).ready(function() {
                             <td>{{$course->date_end}}</td>
                             <td>{{$course->active}}</td>
                             <td>
-                                <a class="btn btn-secondary" href="{{ url('/admin/'.$course->id.'/edit') }}"> Modify</a>
+                                <a class="btn btn-secondary" href="{{ url('/admin/courses/'.$course->id.'/edit') }}"> Modify</a>
                             </td>
                             <td>
-                                <form method="post" action="{{ url('/admin/'.$course->id) }}">
+                                <form method="post" action="{{ url('/admin/courses/'.$course->id) }}">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Do you want to delete this register?');">Delete</button>

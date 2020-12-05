@@ -14,8 +14,8 @@ class CoursesController extends Controller
      */
     public function index()
     {
-
-        return view('admin.index');
+        return view('admin.courses.index');
+       // return view('admin.index');
     }
 
     /**
@@ -26,7 +26,8 @@ class CoursesController extends Controller
     public function create()
     {
         $data['courses']=Courses::paginate(10);
-       return view('admin.create', $data);
+       return view('admin.courses.create', $data);
+       return view('admin.courses.create');
 
 
 
@@ -74,7 +75,7 @@ class CoursesController extends Controller
     {
         //
         $course= Courses::findOrFail($id);
-        return view('admin.edit', compact('course'));
+        return view('admin.courses.edit', compact('course'));
 
     }
 
@@ -92,7 +93,7 @@ class CoursesController extends Controller
         Courses::where('id','=',$id )->update($dataCourses);
 
         $course= Courses::findOrFail($id);
-        return view('admin.edit', compact('course'));
+        return view('admin.coureses.edit', compact('course'));
     }
 
     /**
@@ -106,6 +107,6 @@ class CoursesController extends Controller
         //
         Courses::destroy($id);
 
-        return redirect('/admin/create');
+        return redirect('/admin/courses/create');
     }
 }

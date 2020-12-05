@@ -29,7 +29,7 @@ $(document).ready(function() {
 
 @section('content')
 
-    <form class="form-horizontal" action="{{ url('/admin/'.$course->id) }}" method="post" enctype="multiplart/form-data">
+    <form class="form-horizontal" action="{{ url('/admin/courses'.$course->id) }}" method="post" enctype="multiplart/form-data">
     {{ csrf_field() }}
     {{ method_field('PATCH') }}
         <div class="form-group">
@@ -58,7 +58,7 @@ $(document).ready(function() {
         </div>
 
             <input  type="submit" class="btn btn-secondary" value="Update" onclick="MyPop()">
-            <a class="btn btn-secondary" href="{{ url('/admin/create')}}">Return</a>
+            <a class="btn btn-secondary" href="{{ url('/admin/courses/create')}}">Return</a>
 
     </form>
 

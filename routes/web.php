@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\scheduleController;
 use App\Http\Controllers\admin\coursesController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,23 +28,19 @@ use App\Http\Controllers\admin\coursesController;
 
 //Auth::routes(['reset'=>false, 'verify'=>false]);
 
-//Base
-Route::get('/', function(){
-    return view('welcome');
-})->middleware('auth');
+//Rutas Admin
+Route::resource('admin/courses', App\Http\Controllers\CoursesController::class)->middleware('auth');
 
 
 //Roles de usuario
 
-
+Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('soloadmin');
 Route::get('/teacher', [App\Http\Controllers\TeacherController::class, 'getTeacher'])->name('teacher');
 Route::get('/userDAM', [App\Http\Controllers\UserDAMController::class, 'getUserDAM'])->name('userDAM');
 Route::get('/userDAW', [App\Http\Controllers\UserDAWController::class, 'getUserDAW'])->name('userDAW');
 
 //Crud ADMIN
 
-//Courses
-Route::resource('admin', App\Http\Controllers\CoursesController::class)->middleware('auth');
 
 
 Auth::routes();
