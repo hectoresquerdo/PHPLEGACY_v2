@@ -42,7 +42,14 @@
                             <label for="tipo" class="col-md-4 col-form-label text-md-right">{{ __('User Type') }}</label>
 
                             <div class="col-md-6">
-                                <input id="tipo" type="text" class="form-control @error('tipo') is-invalid @enderror" name="tipo" value="{{ old('tipo') }}" required autocomplete="email">
+                                <input list="usertypes" id="tipo" type="text" class="form-control @error('tipo') is-invalid @enderror" name="tipo" value="{{ old('tipo') }}" required>
+                                        <datalist id="usertypes">
+                                                    <option value="1">
+                                                    <option value="2">
+                                                    <option value="3">
+                                                    <option value="4">
+
+                                                    </datalist>
 
                                 @error('tipo')
                                     <span class="invalid-feedback" role="alert">
