@@ -29,7 +29,9 @@ use App\Http\Controllers\admin\coursesController;
 //Auth::routes(['reset'=>false, 'verify'=>false]);
 
 //Rutas Admin
+Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.index');
 Route::resource('admin/courses', App\Http\Controllers\CoursesController::class)->middleware('auth');
+Route::resource('admin/students', App\Http\Controllers\StudentsController::class)->middleware('auth');
 
 
 //Roles de usuario

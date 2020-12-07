@@ -14,12 +14,6 @@ $(document).ready(function() {
     } );
 } );
 </script>
-<script>
-    function MyPop(){
-        alert("Register added!");
-    }
-
-    </script>
 @stop
 
     @section('content_header')
@@ -56,8 +50,7 @@ $(document).ready(function() {
             <label class="control-label" for="active">{{'Active'}}</label>
             <input class="form-control" type="text" name="Active" id="Active" value="">
         </div>
-            <input  type="submit" class="btn btn-secondary" value="Add" onclick="MyPop()">
-
+       <input class="btn btn-secondary" type="submit" value="Add">
 </form>
 
  </br>
@@ -88,7 +81,7 @@ $(document).ready(function() {
                     <tbody>
                     @foreach($courses as $course)
                         <tr>
-                                {{$loop->iteration}}
+
 
                             <td>{{$course->name}}</td>
                             <td>{{$course->description}}</td>

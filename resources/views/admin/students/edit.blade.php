@@ -29,7 +29,7 @@ $(document).ready(function() {
 
 @section('content')
 
-    <form class="form-horizontal" action="{{ url('/admin/courses/'.$course->id) }}" method="POST" enctype="multiplart/form-data">
+    <form class="form-horizontal" action="{{ url('/admin/courses'.$course->id) }}" method="post" enctype="multiplart/form-data">
     {{ csrf_field() }}
     {{ method_field('PATCH') }}
         <div class="form-group">

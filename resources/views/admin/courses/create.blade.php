@@ -14,6 +14,12 @@ $(document).ready(function() {
     } );
 } );
 </script>
+<script>
+    function MyPop(){
+        alert("Register added!");
+    }
+
+    </script>
 @stop
 
     @section('content_header')
@@ -24,8 +30,9 @@ $(document).ready(function() {
 @section('content')
 
 
-    <form action="{{ url('/admin/courses') }}" method="post" enctype="multiplart/form-data">
-{{ csrf_field() }}
+    <form action="{{ url('/admin/courses') }}" method="POST" enctype="multiplart/form-data">
+        {{ csrf_field() }}
+
         <div class="form-group">
             <label class="control-label" for="name">{{'Name'}}</label>
             <input class="form-control" type="text" name="name" id="name" value="">
@@ -50,7 +57,8 @@ $(document).ready(function() {
             <label class="control-label" for="active">{{'Active'}}</label>
             <input class="form-control" type="text" name="Active" id="Active" value="">
         </div>
-       <input class="btn btn-secondary" type="submit" value="Add">
+            <input  type="submit" class="btn btn-secondary" value="Add" onclick="MyPop()">
+
 </form>
 
  </br>
@@ -81,7 +89,6 @@ $(document).ready(function() {
                     <tbody>
                     @foreach($courses as $course)
                         <tr>
-
 
                             <td>{{$course->name}}</td>
                             <td>{{$course->description}}</td>

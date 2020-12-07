@@ -14,8 +14,7 @@ class CoursesController extends Controller
      */
     public function index()
     {
-        return view('admin.courses.index');
-       // return view('admin.index');
+        return view('admin.index');
     }
 
     /**
@@ -26,10 +25,7 @@ class CoursesController extends Controller
     public function create()
     {
         $data['courses']=Courses::paginate(10);
-       return view('admin.courses.create', $data);
-       return view('admin.courses.create');
-
-
+        return view('admin.courses.create', $data);
 
 
     }
@@ -43,13 +39,17 @@ class CoursesController extends Controller
     public function store(Request $request)
     {
         //
+
         $dataCourses=request()->all();
 
         $dataCourses=request()->except('_token');
 
         Courses::insert($dataCourses);
 
-        return response()->json($dataCourses);
+        return redirect()->route('courses.create');
+
+
+
 
 
     }
@@ -93,7 +93,8 @@ class CoursesController extends Controller
         Courses::where('id','=',$id )->update($dataCourses);
 
         $course= Courses::findOrFail($id);
-        return view('admin.coureses.edit', compact('course'));
+        return redirect()->route('courses.create');
+
     }
 
     /**
