@@ -26,6 +26,8 @@ class StudentsController extends Controller
     public function create()
     {
         //
+        $data['students']=Students::paginate(50);
+        return view('admin.students.create', $data);
     }
 
     /**
@@ -36,7 +38,13 @@ class StudentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dataStudents=request()->all();
+
+        $dataStudents=request()->except('_token');
+
+        Students::insert($dataCodataStudentsurses);
+
+        return redirect()->route('students.create');
     }
 
     /**
@@ -56,9 +64,10 @@ class StudentsController extends Controller
      * @param  \App\Models\Students  $students
      * @return \Illuminate\Http\Response
      */
-    public function edit(Students $students)
+    public function edit($id)
     {
-        //
+        $student= Students::findOrFail($id);
+        return view('admin.students.edit', compact('student'));
     }
 
     /**
@@ -68,9 +77,13 @@ class StudentsController extends Controller
      * @param  \App\Models\Students  $students
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Students $students)
+    public function update(Request $request, $id)
     {
-        //
+        $dataStudents=request()->except(['_token', '_method']);
+        Students::where('id','=',$id )->update($dataStudents);
+
+        $student= Students::findOrFail($id);
+        return redirect()->route('students.create');
     }
 
     /**
@@ -79,8 +92,10 @@ class StudentsController extends Controller
      * @param  \App\Models\Students  $students
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Students $students)
+    public function destroy($id)
     {
-        //
+        Students::destroy($id);
+
+        return redirect('/admin/students/create');
     }
 }

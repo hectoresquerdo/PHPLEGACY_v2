@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Admin - Course Panel')
+@section('title', 'Admin - Students Panel')
 
 @section('css')
     <!--<link rel="stylesheet" href="/css/admin_custom.css">-->
@@ -23,42 +23,55 @@ $(document).ready(function() {
 @stop
 
     @section('content_header')
-    <h1>Modify Course </h1>
+    <h1>Modify Student </h1>
 @stop
 
 
 @section('content')
 
-    <form class="form-horizontal" action="{{ url('/admin/courses'.$course->id) }}" method="post" enctype="multiplart/form-data">
+    <form class="form-horizontal" action="{{ url('/admin/students/'.$student->id) }}" method="post" enctype="multiplart/form-data">
     {{ csrf_field() }}
     {{ method_field('PATCH') }}
+         <div class="form-group">
+            <label class="control-label" for="username">{{'Username'}}</label>
+            <input class="form-control" type="text" name="username" id="username" value="{{ $student->username}}">
+        </div>
+
         <div class="form-group">
+            <label class="control-label" for="pass">{{'Pass'}}</label>
+            <input class="form-control" type="text" name="pass" id="pass" value="{{ $student->pass}}">
+        </div>
+
+         <div class="form-group">
+            <label class="control-label" for="email">{{'Email'}}</label>
+            <input class="form-control" type="text" name="email" id="email" value="{{ $student->email}}" >
+        </div>
+
+         <div class="form-group">
             <label class="control-label" for="name">{{'Name'}}</label>
-            <input class="form-control" type="text" name="name" id="name" value="{{ $course->name}}">
+            <input class="form-control" type="text" name="name" id="name" value="{{ $student->name}}" >
         </div>
 
         <div class="form-group">
-            <label class="control-label" for="description">{{'Description'}}</label>
-            <input class="form-control" type="text" name="description" id="description" value="{{ $course->description}}">
+            <label class="control-label" for="surname">{{'Surname'}}</label>
+            <input class="form-control" type="text" name="surname" id="surname" value="{{ $student->surname}}">
         </div>
-
-         <div class="form-group">
-            <label class="control-label" for="date_start">{{'Date start'}}</label>
-            <input class="form-control" type="date" name="date_start" id="date_start" value="{{ $course->date_start}}" required>
+          <div class="form-group">
+            <label class="control-label" for="telephone">{{'Telephone'}}</label>
+            <input class="form-control" type="text" name="telephone" id="telephone" value="{{ $student->telephone}}">
         </div>
-
-         <div class="form-group">
-            <label class="control-label" for="date_end">{{'Date end'}}</label>
-            <input class="form-control" type="date" name="date_end" id="date_end" value="{{ $course->date_end}}" required>
+         </div>
+          <div class="form-group">
+            <label class="control-label" for="nif">{{'Nif'}}</label>
+            <input class="form-control" type="text" name="nif" id="nif" value="{{ $student->nif}}">
         </div>
-
-        <div class="form-group">
-            <label class="control-label" for="active">{{'Active'}}</label>
-            <input class="form-control" type="text" name="Active" id="Active" value="{{ $course->active}}">
+           <div class="form-group">
+            <label class="control-label" for="date_registered">{{'Date Registered'}}</label>
+            <input class="form-control" type="datetime-local" name="date_registered" id="date_registered" value="{{ $student->date_registered}}">
         </div>
 
             <input  type="submit" class="btn btn-secondary" value="Update" onclick="MyPop()">
-            <a class="btn btn-secondary" href="{{ url('/admin/courses/create')}}">Return</a>
+            <a class="btn btn-secondary" href="{{ url('/admin/students/create')}}">Return</a>
 
     </form>
 

@@ -31,5 +31,13 @@ $(document).ready(function() {
     <a href="http://localhost/calendar/public/admin/courses/create" class="btn btn-primary">Go to Courses Panel</a>
   </div>
 </div>
+<div class="card text-white bg-secondary mb-3" style="width: 18rem;">
+
+  <div class="card-body">
+    <h5 class="card-title">Students Panel</h5>
+    <p class="card-text">Here you can create, update, modify, delete and store this panel!</p>
+    <a href="http://localhost/calendar/public/admin/students/create" class="btn btn-primary">Go to Students Panel</a>
+  </div>
+</div>
 
 @endsection
