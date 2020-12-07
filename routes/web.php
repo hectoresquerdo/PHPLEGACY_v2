@@ -33,6 +33,7 @@ Route::resource('admin/courses', App\Http\Controllers\CoursesController::class)-
 Route::resource('admin/students', App\Http\Controllers\StudentsController::class)->middleware('auth');
 Route::resource('admin/schedules', App\Http\Controllers\SchedulesController::class)->middleware('auth');
 Route::resource('admin/works', App\Http\Controllers\WorksController::class)->middleware('auth');
+Route::resource('admin/exams', App\Http\Controllers\ExamsController::class)->middleware('auth');
 
 
 //Roles de usuario
