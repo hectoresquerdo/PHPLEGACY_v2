@@ -32,7 +32,7 @@ Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->nam
 Route::resource('admin/courses', App\Http\Controllers\CoursesController::class)->middleware('auth');
 Route::resource('admin/students', App\Http\Controllers\StudentsController::class)->middleware('auth');
 Route::resource('admin/schedules', App\Http\Controllers\SchedulesController::class)->middleware('auth');
-
+Route::resource('admin/works', App\Http\Controllers\WorksController::class)->middleware('auth');
 
 
 //Roles de usuario
