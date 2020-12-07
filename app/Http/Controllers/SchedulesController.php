@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Students;
+use App\Models\Schedules;
 use Illuminate\Http\Request;
 
-class StudentsController extends Controller
+class SchedulesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,8 +26,8 @@ class StudentsController extends Controller
     public function create()
     {
         //
-        $data['students']=Students::paginate(50);
-        return view('admin.students.create', $data);
+        $data['schedules']=Schedules::paginate(50);
+        return view('admin.schedules.create', $data);
     }
 
     /**
@@ -38,22 +38,22 @@ class StudentsController extends Controller
      */
     public function store(Request $request)
     {
-        $dataStudents=request()->all();
+        $dataSchedules=request()->all();
 
-        $dataStudents=request()->except('_token');
+        $dataSchedules=request()->except('_token');
 
-        Students::insert($dataStudents);
+        Schedules::insert($dataSchedules);
 
-        return redirect()->route('students.create');
+        return redirect()->route('schedules.create');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Students  $students
+     * @param  \App\Models\Schedules  $schedules
      * @return \Illuminate\Http\Response
      */
-    public function show(Students $students)
+    public function show(Schedules $schedules)
     {
         //
     }
@@ -61,41 +61,45 @@ class StudentsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Students  $students
+     * @param  \App\Models\Schedules  $schedules
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $student= Students::findOrFail($id);
-        return view('admin.students.edit', compact('student'));
+        //
+
+        $schedule= Schedules::findOrFail($id);
+        return view('admin.schedules.edit', compact('schedule'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Students  $students
+     * @param  \App\Models\Schedules  $schedules
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $dataStudents=request()->except(['_token', '_method']);
-        Students::where('id','=',$id )->update($dataStudents);
+        //
+        $dataSchedules=request()->except(['_token', '_method']);
+        Schedules::where('id','=',$id )->update($dataSchedules);
 
-        $student= Students::findOrFail($id);
-        return redirect()->route('students.create');
+        $schedule= Schedules::findOrFail($id);
+        return redirect()->route('schedules.create');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Students  $students
+     * @param  \App\Models\Schedules  $schedules
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        Students::destroy($id);
+        //
+        Schedules::destroy($id);
 
-        return redirect('/admin/students/create');
+        return redirect('/admin/schedules/create');
     }
 }

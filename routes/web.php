@@ -2,8 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\admin\scheduleController;
-use App\Http\Controllers\admin\coursesController;
+
 
 
 /*
@@ -32,6 +31,8 @@ use App\Http\Controllers\admin\coursesController;
 Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.index');
 Route::resource('admin/courses', App\Http\Controllers\CoursesController::class)->middleware('auth');
 Route::resource('admin/students', App\Http\Controllers\StudentsController::class)->middleware('auth');
+Route::resource('admin/schedules', App\Http\Controllers\SchedulesController::class)->middleware('auth');
+
 
 
 //Roles de usuario
