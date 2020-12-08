@@ -15,15 +15,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-/*Route::get('/', function () {
-    return view('eventos/index');
-});*/
+//use App\Http\Controllers\EventosController;
 
 //NO BORRAR, MUY IMPORTANTE, REDIRECCIÓN AL CALENDAR YA CONFIGURADO!!
-//Route::get('/', [App\Http\Controllers\EventosController::class, 'index'])->middleware('auth');
-//use App\Http\Controllers\EventosController;
-//Route::resource('eventos',EventosController::class)->middleware('auth');
+//Route::get('/eventos', [App\Http\Controllers\EventosController::class, 'index'])->middleware('auth');
+Route::resource('/eventos', App\Http\Controllers\EventosController::class)->middleware('auth');
 
 //Auth::routes(['reset'=>false, 'verify'=>false]);
 

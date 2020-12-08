@@ -4,11 +4,11 @@
         var calendar = new FullCalendar.Calendar(calendarEl, {
 
 
-            initialDate: '2020-11-01',
+            initialDate: '2020-12-01',
             initialView: 'dayGridMonth',
             nowIndicator: true,
             headerToolbar: {
-            left: 'prev,next today, Button, ModalButton',
+            left: 'prev,next today',
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
         },
@@ -17,21 +17,7 @@
             selectable: true,
             selectMirror: true,
             dayMaxEvents: true,
-            customButtons:{
-                Button:{
-                    text:"Return",
-                    click:function(){
-                        location.href = "https://www.google.com/"
-                    }
-                },
-                ModalButton:{
-                    text: "Events",
-                    click:function(){
-                    $('#exampleModal').modal('toggle');
 
-                    }
-                }
-            },
             dateClick:function(info){
 
                 cleanForm();

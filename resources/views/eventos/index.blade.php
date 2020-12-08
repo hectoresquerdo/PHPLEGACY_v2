@@ -1,16 +1,94 @@
 @extends('layouts.app')
+@extends('adminlte::page')
 
 @section('scripts')
-    <link rel="stylesheet" href="{{ asset('fullcalendar/lib/main.css') }}">
+    //<link rel="stylesheet" href="{{ asset('fullcalendar/lib/main.css') }}">
 
-    <script src="{{ asset('fullcalendar/lib/main.js') }}" defer></script>
+   //<script src="{{ asset('fullcalendar/lib/main.js') }}" defer></script>
 
     <script>
-        var url_="{{ url('/eventos') }}";
-        var url_show="{{ url('/eventos/show') }}";
+       var url_="{{ url('/eventos') }}";
+      //var url_show="{{ url('/eventos/show') }}";
     </script>
 
     <script src="{{ asset('js/main.js') }}" defer></script>
+<script>
+
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+
+
+            initialDate: '2020-12-01',
+            initialView: 'dayGridMonth',
+            nowIndicator: true,
+            headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+        },
+            navLinks: true,
+            editable: true,
+            selectable: true,
+            selectMirror: true,
+            dayMaxEvents: true,
+
+
+            dateClick:function(info){
+
+                cleanForm();
+
+                $('#txtDate').val(info.dateStr);
+                $("#btnAdd").prop("disabled", false);
+                $("#btnModify").prop("disabled", true);
+                $("#btnDelete").prop("disabled", true);
+                $('#exampleModal').modal();
+
+
+            },
+            eventClick: function(info){
+
+                $("#btnAdd").prop("disabled", true);
+                $("#btnModify").prop("disabled", false);
+                $("#btnDelete").prop("disabled", false);
+
+                $('#txtID').val(info.event.id)
+                $('#txtTitle').val(info.event.title)
+
+                mes = (info.event.start.getMonth()+1);
+                dia = (info.event.start.getDate());
+                anio = (info.event.start.getFullYear());
+
+                mes = (mes<10)?"0"+mes:mes;
+                dia = (dia<10)?"0"+dia:dia;
+
+                minutos = info.event.start.getMinutes();
+                hora= info.event.start.getHours();
+
+                minutos = (minutos<10)?"0"+minutos:minutos;
+                hora = (hora<10)?"0"+hora:hora;
+
+                horario = (hora+":"+minutos);
+
+
+                $('#txtDate').val(anio+"-"+mes+"-"+dia)
+                $('#txtHour').val(horario)
+                $('#txtColor').val(info.event.backgroundColor)
+                $('#txtDescription').val(info.event.extendedProps.descripcion)
+                $('#exampleModal').modal();
+            },
+            events: "{{ url('/eventos/show') }}"
+
+        });
+
+
+
+        calendar.render();
+
+      });
+
+    </script>
 
 @endsection
 @section('content')
@@ -20,7 +98,6 @@
       <div class="col-9"><div id="calendar"></div></div>
       <div class="col"></div>
 </div>
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -55,9 +132,6 @@
 
                  </div>
 
-                    <label>Description:</label>
-                    <textarea class="form-control" name="txtDescription" id="txtDescription" cols="30" rows="4"></textarea>
-
 
                 <div class="form-group col-md-12">
                     <label>Color:</label>
@@ -67,10 +141,7 @@
         </div>
         <div class="modal-footer">
 
-          <button id="btnAdd" class="btn btn-success">Add</button>
-          <button id="btnModify" class="btn btn-success">Modify</button>
-          <button id="btnDelete" class="btn btn-danger">Delete</button>
-          <button id="btnCancel" data-dismiss="modal" class="btn btn-secondary">Cancel</button>
+         <button id="btnCancel" data-dismiss="modal" class="btn btn-secondary">Cancel</button>
 
        </div>
       </div>
