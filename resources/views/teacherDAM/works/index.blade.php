@@ -57,6 +57,10 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1">
                         <span class="navbar-toggler-icon"></span>
+                    </button> <a class="navbar-brand" href="{{ route('teacherDAM.students.index') }}">Students</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                        <span class="navbar-toggler-icon"></span>
                     </button> <a class="navbar-brand" href="{{ route('teacherDAM.schedules.index') }}">Subjects</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1">

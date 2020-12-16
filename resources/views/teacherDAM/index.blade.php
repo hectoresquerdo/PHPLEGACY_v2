@@ -64,6 +64,15 @@
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
+                            <h5 class="card-title">DAM students Panel</h5>
+                            <p class="card-text">Here you can view the Subjects of your Course!</p>
+                            <a href="{{ route('teacherDAM.students.index') }}" class="btn btn-primary">DAM Students</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
                             <h5 class="card-title">Works Panel</h5>
                             <p class="card-text">Here you can create, update, modify, delete and store this panel!</p>
                             <a href="{{ route('teacherDAM.works.index') }}" class="btn btn-primary">Works Panel</a>

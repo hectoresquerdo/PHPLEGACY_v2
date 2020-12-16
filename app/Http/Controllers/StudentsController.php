@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Students;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class StudentsController extends Controller
 {
@@ -26,8 +28,29 @@ class StudentsController extends Controller
     public function create()
     {
         //
-        $data['students']=Students::paginate(50);
-        return view('admin.students.create', $data);
+        if(auth::user()->tipo == '1'){
+            $users = DB::table('users')
+            ->where('tipo', '>=', '4')
+            ->get();
+            $data['students']=$users;
+            return view('admin.students.create', $data);
+        }
+        if(auth::user()->tipo == '2'){
+            $users = DB::table('users')
+            ->where('tipo', '=', '4')
+            ->get();
+            $data['students']=$users;
+            return view('teacherDAM.students.index', $data);
+        }
+        if(auth::user()->tipo == '3'){
+            $users = DB::table('users')
+            ->where('tipo', '=', '5')
+            ->get();
+            $data['students']=$users;
+            return view('teacherDAW.students.index', $data);
+        }
+
+
     }
 
     /**
@@ -42,7 +65,7 @@ class StudentsController extends Controller
 
         $dataStudents=request()->except('_token');
 
-        Students::insert($dataStudents);
+        Users::insert($dataStudents);
 
         return redirect()->route('students.create');
     }
@@ -50,7 +73,7 @@ class StudentsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Students  $students
+     * @param  \App\Models\Users  $students
      * @return \Illuminate\Http\Response
      */
     public function show(Students $students)
@@ -61,40 +84,44 @@ class StudentsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Students  $students
+     * @param  \App\Models\Users  $students
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $student= Students::findOrFail($id);
-        return view('admin.students.edit', compact('student'));
+        $student= Users::findOrFail($id);
+
+        if(auth::user()->tipo == '1'){
+            return view('admin.students.edit', compact('student'));
+        }
+        //return view('admin.students.edit', compact('student'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Students  $students
+     * @param  \App\Models\Users  $students
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $dataStudents=request()->except(['_token', '_method']);
-        Students::where('id','=',$id )->update($dataStudents);
+        Users::where('id','=',$id )->update($dataStudents);
 
-        $student= Students::findOrFail($id);
-        return redirect()->route('students.create');
+        $student= Users::findOrFail($id);
+        return redirect()->route('students.edit');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Students  $students
+     * @param  \App\Models\Users  $students
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        Students::destroy($id);
+        Users::destroy($id);
 
         return redirect('/admin/students/create');
     }

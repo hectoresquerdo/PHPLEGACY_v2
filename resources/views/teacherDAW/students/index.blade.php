@@ -28,7 +28,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">DAM teacher Panel</h1>
+                <h1 class="m-0">DAW teacher Panel</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -59,41 +59,38 @@
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#bs-example-navbar-collapse-1">
                             <span class="navbar-toggler-icon"></span>
-                        </button> <a class="navbar-brand" href="{{ route('teacherDAM.students.index') }}">Students</a>
+                        </button> <a class="navbar-brand" href="{{ route('teacherDAW.students.index') }}">Students</a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#bs-example-navbar-collapse-1">
                             <span class="navbar-toggler-icon"></span>
-                        </button> <a class="navbar-brand" href="{{ route('teacherDAM.schedules.index') }}">Subjects</a>
+                        </button> <a class="navbar-brand" href="{{ route('teacherDAW.schedules.index') }}">Subjects</a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#bs-example-navbar-collapse-1">
                             <span class="navbar-toggler-icon"></span>
-                        </button> <a class="navbar-brand" href="{{ route('teacherDAM.exams.create') }}">Exams</a>
+                        </button> <a class="navbar-brand" href="{{ route('teacherDAW.exams.index') }}">Exams</a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#bs-example-navbar-collapse-1">
                             <span class="navbar-toggler-icon"></span>
-                        </button> <a class="navbar-brand" href="{{ route('teacherDAM.works.index') }}">Works</a>
+                        </button> <a class="navbar-brand" href="{{ route('teacherDAW.works.index') }}">Works</a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#bs-example-navbar-collapse-1">
                             <span class="navbar-toggler-icon"></span>
-                        </button> <a class="navbar-brand" href="{{ route('teacherDAM.index') }}">DAM Panel</a>
+                        </button> <a class="navbar-brand" href="{{ route('teacherDAW.index') }}">DAM Panel</a>
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="navbar-nav ml-md-auto">
 
-                                <ul class="navbar-nav ml-md-auto">
-
-                                </ul>
+                            </ul>
                         </div>
                     </nav>
                     <div class="jumbotron">
 
 
-                        </br>
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h3 class="card-title">Subjects List</h3>
+                                            <h3 class="card-title">Students List</h3>
                                         </div>
                                         <!-- /.card-header -->
                                         <div class="card-body">
@@ -101,23 +98,30 @@
                                                 <thead>
                                                     <tr>
 
-                                                        <th>Id</th>
-                                                        <th>Day start</th>
-                                                        <th>Day end</th>
+                                                        <th>Username</th>
+                                                        <th>Email</th>
+                                                        <th>Name</th>
+                                                        <th>Surname</th>
+                                                        <th>Telelphone</th>
+                                                        <th>Nif</th>
                                                         <th>Course</th>
-                                                        <th>Teacher</th>
+
 
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($schedules as $schedule)
+                                                    @foreach ($students as $student)
                                                         <tr>
 
-                                                            <td>{{ $schedule->id_class }}</td>
-                                                            <td>{{ $schedule->time_start }}</td>
-                                                            <td>{{ $schedule->time_end }}</td>
-                                                            <td>{{ $schedule->course }}</td>
-                                                            <td>{{ $schedule->teacher }}</td>
+
+                                                            <td>{{ $student->username }}</td>
+                                                            <td>{{ $student->email }}</td>
+                                                            <td>{{ $student->name }}</td>
+                                                            <td>{{ $student->surname }}</td>
+                                                            <td>{{ $student->telephone }}</td>
+                                                            <td>{{ $student->nif }}</td>
+                                                            <td>{{ $student->course }}</td>
+
 
                                                         </tr>
                                                     @endforeach
@@ -132,15 +136,15 @@
                                 <!-- /.col -->
                             </div>
                             <!-- /.row -->
-
-
+                            <!-- /.row -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+</div>
 
-    </body>
+</body>
 
 
 

@@ -57,7 +57,17 @@
                         <div class="card-body">
                             <h5 class="card-title">Subjects Panel</h5>
                             <p class="card-text">Here you can view the Subjects of your Course!</p>
-                            <a href="{{route('teacherDAW.schedules.index')}}" class="btn btn-primary">Subjects
+                            <a href="{{ route('teacherDAW.schedules.index') }}" class="btn btn-primary">Subjects
+                                Panel</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Students Panel</h5>
+                            <p class="card-text">Here you can view the Students of your Course!</p>
+                            <a href="{{ route('teacherDAW.students.index') }}" class="btn btn-primary">Students
                                 Panel</a>
                         </div>
                     </div>

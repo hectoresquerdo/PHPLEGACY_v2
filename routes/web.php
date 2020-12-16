@@ -8,6 +8,8 @@ use App\Http\Controllers\EventosController;
 use App\Http\Controllers\WorksController;
 use App\Http\Controllers\SchedulesController;
 use App\Http\Controllers\EvaluationController;
+use App\Http\Controllers\StudentsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +45,7 @@ Route::get('teacherDAM/exams/edit', [ExamsController::class, 'edit'])->name('tea
 Route::get('teacherDAM/works', [WorksController::class, 'create'])->name('teacherDAM.works.index');
 Route::get('teacherDAM/works/edit', [WorksController::class, 'edit'])->name('teacherDAM.works.edit');
 Route::get('teacherDAM/schedules', [SchedulesController::class, 'create'])->name('teacherDAM.schedules.index');
+Route::get('teacherDAM/students', [StudentsController::class, 'create'])->name('teacherDAM.students.index');
 
 
 
@@ -53,7 +56,8 @@ Route::get('teacherDAW/exams/edit', [ExamsController::class, 'edit'])->name('tea
 Route::get('teacherDAW/works', [WorksController::class, 'create'])->name('teacherDAW.works.index');
 Route::get('teacherDAW/works/edit', [WorksController::class, 'edit'])->name('teacherDAW.works.edit');
 Route::get('teacherDAW/schedules', [SchedulesController::class, 'create'])->name('teacherDAW.schedules.index');
-//Route::get('teacherDAW/schedules/edit', [SchedulesController::class, 'edit'])->name('teacherDAW.schedules.edit');
+Route::get('teacherDAW/students', [StudentsController::class, 'create'])->name('teacherDAW.students.index');
+
 
 //userDAM views
 Route::get('userDAM', [HomeController::class, 'getUserDAM'])->name('userDAM.index');

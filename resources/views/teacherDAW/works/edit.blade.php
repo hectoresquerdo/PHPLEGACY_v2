@@ -55,6 +55,14 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1">
                         <span class="navbar-toggler-icon"></span>
+                    </button> <a class="navbar-brand" href="{{ route('teacherDAW.students.index') }}">Students</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                        <span class="navbar-toggler-icon"></span>
+                    </button> <a class="navbar-brand" href="{{ route('teacherDAW.schedules.index') }}">Subjects</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                        <span class="navbar-toggler-icon"></span>
                     </button> <a class="navbar-brand" href="{{ route('teacherDAW.exams.index') }}">Exams</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1">
@@ -63,7 +71,7 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1">
                         <span class="navbar-toggler-icon"></span>
-                    </button> <a class="navbar-brand" href="{{ route('teacherDAW.index') }}">DAW Panel</a>
+                    </button> <a class="navbar-brand" href="{{ route('teacherDAW.index') }}">DAM Panel</a>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                         <ul class="navbar-nav ml-md-auto">
