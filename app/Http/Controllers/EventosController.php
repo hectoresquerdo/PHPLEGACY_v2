@@ -21,7 +21,7 @@ class EventosController extends Controller
             return view("eventos/index");
         }
         if(auth::user()->tipo == '2'){
-            return view("teacherDAM.eventos.show");
+            return view("eventos/teacherDAM");
         }
     }
 
@@ -48,6 +48,7 @@ class EventosController extends Controller
         $eventData=request()->except(['_token','_method']);
         evento::insert($eventData);
         print_r($eventData);
+
     }
 
     /**
@@ -59,6 +60,7 @@ class EventosController extends Controller
     public function show()
     {
         if(auth::user()->tipo == '1'){
+
             $data['eventos']=evento::all();
             return response()->json($data['eventos']);
         }

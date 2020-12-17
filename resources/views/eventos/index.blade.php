@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="{{ asset('fullcalendar/lib/main.css') }}">
 
 <script src="{{ asset('fullcalendar/lib/main.js') }}" defer></script>
+<script src="{{ asset('fullcalendar/interaction/src/main.ts') }}" defer></script>
 //<script src="{{ asset('fullcalendar/js/main.js') }}" defer></script>
 
 <script>
@@ -27,6 +28,7 @@
                 center: 'title',
                 right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
             },
+
             navLinks: true,
             editable: true,
             selectable: true,
@@ -35,9 +37,11 @@
 
             dateClick: function(info) {
 
+
                 cleanForm();
 
                 $('#txtDate').val(info.dateStr);
+
                 $("#btnAdd").prop("disabled", false);
                 $("#btnModify").prop("disabled", true);
                 $("#btnDelete").prop("disabled", true);
@@ -46,6 +50,8 @@
 
             },
             eventClick: function(info) {
+
+                console.log(info);
 
                 $("#btnAdd").prop("disabled", true);
                 $("#btnModify").prop("disabled", false);
@@ -73,11 +79,13 @@
                 $('#txtDate').val(anio + "-" + mes + "-" + dia)
                 $('#txtHour').val(horario)
                 $('#txtColor').val(info.event.backgroundColor)
-                $('#txtDescription').val(info.event.extendedProps.descripcion)
+                $('#txtDescription').val(info.event.extendedProps.description)
+                $('#txtCourse').val(info.event.extendedProps.course)
+
                 $('#exampleModal').modal();
             },
 
-            events: "{{ url('/eventos/show') }}"
+            events: $url_show
 
         });
 
@@ -96,7 +104,7 @@
         $('#btnModify').click(function() {
             objEvent = captionDatosGUI("PATCH");
 
-            SendInfo('/' + $('#txtID').val(), objEvent);
+            Modify('/' + $('#txtID').val(), objEvent);
         });
 
         function captionDatosGUI(method) {
@@ -105,8 +113,9 @@
                 id: $('#txtID').val(),
                 title: $('#txtTitle').val(),
                 description: $('#txtDescription').val(),
+                course: $('#txtCourse').val(),
                 color: $('#txtColor').val(),
-                textColor: '#FFFFF',
+                textColor: '#FFFFFF',
                 start: $('#txtDate').val() + " " + $('#txtHour').val(),
                 end: $('#txtDate').val() + " " + $('#txtHour').val(),
                 '_token': $("meta[name='csrf-token']").attr("content"),
@@ -119,7 +128,7 @@
         function SendInfo(action, objEvent) {
             $.ajax({
                 type: "POST",
-                url: url_ + action,
+                url: $url_ + action,
                 data: objEvent,
                 success: function(msg) {
 
@@ -128,14 +137,33 @@
 
                 },
                 error: function() {
-                    alert("There are an error");
+                    alert("There is an error");
+                }
+            });
+        }
+
+        function Modify(action, objEvent) {
+            $.ajax({
+                type: "PATCH",
+                url: $url_ + action,
+                data: objEvent,
+                success: function(msg) {
+
+                    $('#exampleModal').modal('toggle');
+                    calendar.refetchEvents();
+
+                },
+                error: function() {
+                    alert("There is an error");
                 }
             });
         }
 
         function cleanForm() {
+
             $('#txtID').val("")
             $('#txtTitle').val("")
+            $('#txtCourse').val("")
             $('#txtDate').val("")
             $('#txtHour').val("09:00")
             $('#txtColor').val("")
@@ -150,7 +178,7 @@
 @section('content')
     <div class="row">
         <div class="col"></div>
-        <div class="col-9">
+        <div class="col-10">
             <div id="calendar"></div>
         </div>
         <div class="col"></div>
@@ -178,27 +206,38 @@
 
                     <div class="form-row">
 
-                        <div class="form-group col-8">
+                        <div class="form-group col-6">
                             <label>Title:</label>
                             <input type="text" class="form-control" name="txtTitle" id="txtTitle">
                         </div>
+                        <div class="form-group col-6">
+                            <label>Course:</label>
+                            <input type="text" class="form-control" name="txtCourse" id="txtCourse">
+                        </div>
+                        <div class="form-group col-12">
+                            <label>Description:</label>
+                            <textarea class="form-control" cols="30" rows="5" name="txtDescription"
+                                id="txtDescription"></textarea>
+                        </div>
 
-                        <div class="form-group col-4">
-                            <label>Hour:</label>
+
+                        <div class="form-group col-6">
+                            <label>Hour Start:</label>
                             <input type="time" min="09:00" max="14:00" step="600" class="form-control" name="txtHour"
                                 id="txtHour">
 
                         </div>
 
-
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-6">
                             <label>Color:</label>
-                            <input type="color" class="form-control" name="txtColor" id="txtColor" disabled>
+                            <input type="color" class="form-control" name="txtColor" id="txtColor">
                             <div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button id="btnAdd" data-dismiss="modal" class="btn btn-secondary">Add</button>
+
+                            <button id="btnAdd" data-dismiss="modal" class="btn btn-primary">Add</button>
+                            <button id="btnModify" data-dismiss="modal" class="btn btn-secondary">Modify</button>
                             <button id="btnDelete" data-dismiss="modal" class="btn btn-secondary">Delete</button>
                             <button id="btnCancel" data-dismiss="modal" class="btn btn-secondary">Cancel</button>
 

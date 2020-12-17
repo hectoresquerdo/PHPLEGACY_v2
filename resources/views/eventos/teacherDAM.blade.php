@@ -68,6 +68,8 @@
                 },
                 eventClick: function(info) {
 
+                    //Para otra descripción: info.event.extendedProps.{dato a verificar}
+
                     $("#btnAdd").prop("disabled", true);
                     $("#btnModify").prop("disabled", false);
                     $("#btnDelete").prop("disabled", false);
@@ -98,7 +100,7 @@
                     $('#exampleModal').modal();
                 },
 
-                events: "{{ url('/eventos/show') }}"
+                events: $url_show
 
             });
 

@@ -18,6 +18,7 @@ class CreateEventosTable extends Migration
 
             $table->string('title', 255);
             $table->text('description')->nullable();
+            $table->text('course')->nullable();
 
             $table->string('color', 20);
             $table->string('textColor', 20);
@@ -25,8 +26,7 @@ class CreateEventosTable extends Migration
             $table->dateTime('start');
             $table->dateTime('end');
 
-            $table->timestamps();
-        });
+       });
     }
 
     /**
