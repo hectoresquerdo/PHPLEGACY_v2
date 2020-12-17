@@ -23,6 +23,16 @@ class EventosController extends Controller
         if(auth::user()->tipo == '2'){
             return view("eventos/teacherDAM");
         }
+        if(auth::user()->tipo == '3'){
+            return view("eventos/teacherDAW");
+        }
+        if(auth::user()->tipo == '4'){
+            return view("eventos/userDAM");
+        }
+        if(auth::user()->tipo == '5'){
+            return view("eventos/userDAW");
+        }
+
     }
 
     /**
@@ -69,6 +79,27 @@ class EventosController extends Controller
             ->where('course', '=', 'DAM')
             ->get();
             $data['eventos']=$DAM;
+            return response()->json($data['eventos']);
+        }
+        if(auth::user()->tipo == '3'){
+            $DAW = DB::table('eventos')
+            ->where('course', '=', 'DAW')
+            ->get();
+            $data['eventos']=$DAW;
+            return response()->json($data['eventos']);
+        }
+        if(auth::user()->tipo == '4'){
+            $DAW = DB::table('eventos')
+            ->where('course', '=', 'DAM')
+            ->get();
+            $data['eventos']=$DAW;
+            return response()->json($data['eventos']);
+        }
+        if(auth::user()->tipo == '5'){
+            $DAW = DB::table('eventos')
+            ->where('course', '=', 'DAW')
+            ->get();
+            $data['eventos']=$DAW;
             return response()->json($data['eventos']);
         }
 

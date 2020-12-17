@@ -53,7 +53,7 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1">
                         <span class="navbar-toggler-icon"></span>
-                    </button> <a class="navbar-brand" href="#">Calendar</a>
+                    </button> <a class="navbar-brand" href="http://localhost/calendarv2/public/eventos">Calendar</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1">
                         <span class="navbar-toggler-icon"></span>

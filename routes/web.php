@@ -57,7 +57,7 @@ Route::get('teacherDAW/exams/edit', [ExamsController::class, 'edit'])->name('tea
 Route::get('teacherDAW/works', [WorksController::class, 'create'])->name('teacherDAW.works.index');
 Route::get('teacherDAW/works/edit', [WorksController::class, 'edit'])->name('teacherDAW.works.edit');
 Route::get('teacherDAW/schedules', [SchedulesController::class, 'create'])->name('teacherDAW.schedules.index');
-Route::get('teacherDAW/students', [StudentsController::class, 'create'])->name('teacherDAW//.students.index');
+Route::get('teacherDAW/students', [StudentsController::class, 'create'])->name('teacherDAW.students.index');
 
 
 //userDAM views
@@ -74,8 +74,6 @@ Route::get('userDAW/works', [WorksController::class, 'create'])->name('userDAW.w
 Route::get('userDAW/evaluation', [EvaluationController::class, 'viewDAW'])->name('userDAW.evaluation.view');
 
 //Eventos
-//Route::get('/eventos', [EventosController::class, 'index'])->name('eventos');
-//Route::get('/eventos/show', [EventosController::class, 'show'])->name('eventos.show');
 Route::resource('eventos', EventosController::class);
 
 //UserProfile

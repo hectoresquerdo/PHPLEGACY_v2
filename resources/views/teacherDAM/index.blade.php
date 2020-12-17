@@ -93,7 +93,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Calendar</h5>
                             <p class="card-text">Here you can see the actual Calendar</p>
-                            <a href="" class="btn btn-primary">Calendar</a>
+                            <a href="http://localhost/calendarv2/public/eventos" class="btn btn-primary">Calendar</a>
                         </div>
                     </div>
                 </div>

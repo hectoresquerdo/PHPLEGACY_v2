@@ -199,7 +199,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">DAM teacher Panel</h1>
+                <h1 class="m-0">DAW teacher Panel</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -228,23 +228,23 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1">
                         <span class="navbar-toggler-icon"></span>
-                    </button> <a class="navbar-brand" href="{{ route('teacherDAM.students.index') }}">Students</a>
+                    </button> <a class="navbar-brand" href="{{ route('teacherDAW.students.index') }}">Students</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1">
                         <span class="navbar-toggler-icon"></span>
-                    </button> <a class="navbar-brand" href="{{ route('teacherDAM.schedules.index') }}">Subjects</a>
+                    </button> <a class="navbar-brand" href="{{ route('teacherDAW.schedules.index') }}">Subjects</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1">
                         <span class="navbar-toggler-icon"></span>
-                    </button> <a class="navbar-brand" href="{{ route('teacherDAM.exams.create') }}">Exams</a>
+                    </button> <a class="navbar-brand" href="{{ route('teacherDAW.exams.index') }}">Exams</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1">
                         <span class="navbar-toggler-icon"></span>
-                    </button> <a class="navbar-brand" href="{{ route('teacherDAM.works.index') }}">Works</a>
+                    </button> <a class="navbar-brand" href="{{ route('teacherDAW.works.index') }}">Works</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1">
                         <span class="navbar-toggler-icon"></span>
-                    </button> <a class="navbar-brand" href="{{ route('teacherDAM.index') }}">DAM Panel</a>
+                    </button> <a class="navbar-brand" href="{{ route('teacherDAW.index') }}">DAW Panel</a>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                         <ul class="navbar-nav ml-md-auto">
@@ -291,11 +291,11 @@
 
                                         <div class="form-group col-6">
                                             <label>Course:</label>
-                                            <input list="course" type="text" class="form-control" name="txtCourse"
-                                                id="txtCourse" value="{{ old('course') }}" required>
-                                            <datalist id="course">
+                                            <input list="DAW" type="text" class="form-control" name="txtCourse"
+                                                id="txtCourse" required>
+                                            <datalist id="DAW">
 
-                                                <option value="DAM">
+                                                <option value="DAW">
 
                                             </datalist>
                                         </div>
