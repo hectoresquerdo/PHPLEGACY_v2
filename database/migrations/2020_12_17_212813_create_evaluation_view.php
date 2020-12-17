@@ -36,6 +36,8 @@ class CreateEvaluationView extends Migration
                     from users
                     inner join exams on users.id = exams.id_student
                     inner join works on users.id = works.id_student
+                    group by exams.id_class
+
             SQL;
     }
 
