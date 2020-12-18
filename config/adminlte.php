@@ -274,7 +274,7 @@ return [
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
-            'url'  => 'teacher',
+            'url'  => 'admin/profile/create',
             'icon' => 'fas fa-fw fa-user',
         ],
 

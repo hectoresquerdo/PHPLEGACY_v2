@@ -290,14 +290,10 @@
                                         </div>
 
                                         <div class="form-group col-6">
-                                            <label>Course:</label>
-                                            <input list="course" type="text" class="form-control" name="txtCourse"
-                                                id="txtCourse" value="{{ old('course') }}" required>
-                                            <datalist id="course">
-
-                                                <option value="DAM">
-
-                                            </datalist>
+                                            <label for="txtCourse">Course:</label>
+                                            <select class="form-control" id="txtCourse" required>
+                                                <option>DAM</option>
+                                            </select>
                                         </div>
 
 

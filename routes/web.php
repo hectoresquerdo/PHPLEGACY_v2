@@ -9,7 +9,7 @@ use App\Http\Controllers\WorksController;
 use App\Http\Controllers\SchedulesController;
 use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\StudentsController;
-
+use App\Http\Controllers\UserSettingController;
 
 
 /*
@@ -38,6 +38,7 @@ Route::resource('admin/students', App\Http\Controllers\StudentsController::class
 Route::resource('admin/schedules', App\Http\Controllers\SchedulesController::class);
 Route::resource('admin/works', App\Http\Controllers\WorksController::class);
 Route::resource('admin/exams', App\Http\Controllers\ExamsController::class);
+Route::resource('admin/profile', App\Http\Controllers\UserSettingController::class);
 
 //teacherDAM views
 Route::get('teacherDAM', [HomeController::class, 'getTeacherDAM'])->name('teacherDAM.index');
@@ -77,6 +78,7 @@ Route::get('userDAW/evaluation', [EvaluationController::class, 'viewDAW'])->name
 Route::resource('eventos', EventosController::class);
 
 //UserProfile
+Route::resource('users/profile', App\Http\Controllers\UserSettingController::class);
 
 //Logout
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');

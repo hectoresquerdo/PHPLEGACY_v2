@@ -290,14 +290,12 @@
                                         </div>
 
                                         <div class="form-group col-6">
-                                            <label>Course:</label>
-                                            <input list="DAW" type="text" class="form-control" name="txtCourse"
-                                                id="txtCourse" required>
-                                            <datalist id="DAW">
-
-                                                <option value="DAW">
-
-                                            </datalist>
+                                            <div class="form-group col-6">
+                                                <label for="txtCourse">Course:</label>
+                                                <select class="form-control" id="txtCourse">
+                                                    <option>DAW</option>
+                                                </select>
+                                            </div>
                                         </div>
 
 
