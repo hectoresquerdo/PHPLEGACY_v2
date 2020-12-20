@@ -10,6 +10,11 @@ use App\Http\Controllers\SchedulesController;
 use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\UserSettingController;
+use App\Http\Controllers\NotificationsController;
+
+//use App\Http\Controllers\MailController;
+use App\Mail\EvaluationMail;
+use Illuminate\Support\Facades\Mail;
 
 
 /*
@@ -48,6 +53,7 @@ Route::get('teacherDAM/works', [WorksController::class, 'create'])->name('teache
 Route::get('teacherDAM/works/edit', [WorksController::class, 'edit'])->name('teacherDAM.works.edit');
 Route::get('teacherDAM/schedules', [SchedulesController::class, 'create'])->name('teacherDAM.schedules.index');
 Route::get('teacherDAM/students', [StudentsController::class, 'create'])->name('teacherDAM.students.index');
+Route::get('teacherDAM/notifications', [NotificationsController::class, 'viewDAM'])->name('teacherDAM.notifications');
 
 
 
@@ -59,6 +65,7 @@ Route::get('teacherDAW/works', [WorksController::class, 'create'])->name('teache
 Route::get('teacherDAW/works/edit', [WorksController::class, 'edit'])->name('teacherDAW.works.edit');
 Route::get('teacherDAW/schedules', [SchedulesController::class, 'create'])->name('teacherDAW.schedules.index');
 Route::get('teacherDAW/students', [StudentsController::class, 'create'])->name('teacherDAW.students.index');
+Route::get('teacherDAW/notifications', [NotificationsController::class, 'viewDAW'])->name('teacherDAW.notifications');
 
 
 //userDAM views
@@ -82,3 +89,11 @@ Route::resource('users/profile', App\Http\Controllers\UserSettingController::cla
 
 //Logout
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+//Send mail
+Route::get('/sendMail', function(){
+    $correo = new EvaluationMail;
+
+    Mail::to("hector.evalverde@gmail.com")->send($correo);
+    return redirect()->back();
+});

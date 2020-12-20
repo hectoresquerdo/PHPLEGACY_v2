@@ -38,7 +38,8 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('/logout') }}">Logout</a></li>
-                            <li class="breadcrumb-item"><a href="#">User Profile</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('profile.create') }}">User Profile</a>
+                            </li>
 
                         </ol>
                     </div><!-- /.col -->
@@ -94,6 +95,15 @@
                             <h5 class="card-title">Calendar</h5>
                             <p class="card-text">Here you can see the actual Calendar</p>
                             <a href="http://localhost/calendarv2/public/eventos" class="btn btn-primary">Calendar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Notifications</h5>
+                            <p class="card-text">When you have a new Mark, you can notify your students!</p>
+                            <a href="{{ route('teacherDAM.notifications') }}" class="btn btn-primary">Notifications</a>
                         </div>
                     </div>
                 </div>

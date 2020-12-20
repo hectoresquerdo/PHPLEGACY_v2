@@ -282,13 +282,14 @@
 
                                         <div class="form-group col-6">
                                             <label>Title:</label>
-                                            <input type="text" class="form-control" name="txtTitle" id="txtTitle">
+                                            <input type="text" class="form-control" name="txtTitle" id="txtTitle"
+                                                disabled>
                                         </div>
 
                                         <div class="form-group col-6">
                                             <label>Course:</label>
                                             <input list="DAW" type="text" class="form-control" name="txtCourse"
-                                                id="txtCourse" required>
+                                                id="txtCourse" disabled>
                                             <datalist id="DAW">
 
                                                 <option value="DAW">
@@ -301,20 +302,21 @@
                                         <div class="form-group col-12">
                                             <label>Description:</label>
                                             <textarea class="form-control" cols="30" rows="5" name="txtDescription"
-                                                id="txtDescription"></textarea>
+                                                id="txtDescription" disabled></textarea>
                                         </div>
 
 
                                         <div class="form-group col-6">
                                             <label>Hour Start:</label>
                                             <input type="time" min="09:00" max="14:00" step="600" class="form-control"
-                                                name="txtHour" id="txtHour">
+                                                name="txtHour" id="txtHour" disabled>
 
                                         </div>
 
                                         <div class="form-group col-md-6">
                                             <label>Color:</label>
-                                            <input type="color" class="form-control" name="txtColor" id="txtColor">
+                                            <input type="color" class="form-control" name="txtColor" id="txtColor"
+                                                disabled>
                                             <div>
                                             </div>
                                         </div>

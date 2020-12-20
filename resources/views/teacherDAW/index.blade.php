@@ -38,7 +38,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('/logout') }}">Logout</a></li>
-                            <li class="breadcrumb-item"><a href="#">User Profile</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('profile.create') }}">User Profile</a>
 
                         </ol>
                     </div><!-- /.col -->
@@ -99,7 +99,17 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Notifications</h5>
+                            <p class="card-text">When you have a new Mark, you can notify your students!</p>
+                            <a href="{{ route('teacherDAW.notifications') }}" class="btn btn-primary">Notifications</a>
+                        </div>
+                    </div>
+                </div>
             </div>
+
 
         </div>
         <div class='container'>

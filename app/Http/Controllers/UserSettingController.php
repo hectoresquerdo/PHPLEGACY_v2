@@ -35,8 +35,22 @@ class UserSettingController extends Controller
         if(auth::user()->tipo == '1'){
             $data['perfiles']=$user;
             return view('admin.profile.create', $data);
-        }else{
-
+        }
+        if(auth::user()->tipo == '2'){
+            $data['perfiles']=$user;
+            return view('users.teacherDAM.create', $data);
+        }
+        if(auth::user()->tipo == '3'){
+            $data['perfiles']=$user;
+            return view('users.teacherDAW.create', $data);
+        }
+        if(auth::user()->tipo == '4'){
+            $data['perfiles']=$user;
+            return view('users.userDAM.create', $data);
+        }
+        if(auth::user()->tipo == '5'){
+            $data['perfiles']=$user;
+            return view('users.userDAW.create', $data);
         }
     }
 
@@ -82,6 +96,18 @@ class UserSettingController extends Controller
         if(auth::user()->tipo == '1'){
             return view('admin.profile.edit', compact('user'));
         }
+        if(auth::user()->tipo == '2'){
+            return view('users.teacherDAM.edit', compact('user'));
+        }
+        if(auth::user()->tipo == '3'){
+            return view('users.teacherDAW.edit', compact('user'));
+        }
+        if(auth::user()->tipo == '4'){
+            return view('users.userDAM.edit', compact('user'));
+        }
+        if(auth::user()->tipo == '5'){
+            return view('users.userDAW.edit', compact('user'));
+        }
 
     }
 
@@ -111,8 +137,7 @@ class UserSettingController extends Controller
     public function destroy(user $user)
     {
         //
-        User::destroy($id);
-
-        return redirect('/admin/profile/create');
+        /*User::destroy($id);
+        return redirect('/admin/profile/create');*/
     }
 }
