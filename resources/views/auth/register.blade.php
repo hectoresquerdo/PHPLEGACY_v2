@@ -149,14 +149,14 @@
                                 <div class="col-md-6">
                                     <select id="class" type="text" class="form-control" name="class"
                                         value="{{ old('class') }}" required>
-                                        <option></option>
+                                        <option>-</option>
                                         <option>PHP</option>
                                         <option>JAVA</option>
                                         <option>BBDD</option>
                                         <option>ZOCALOS</option>
                                     </select>
                                     <small id="emailHelp" class="form-text text-muted">In case that you are a teacher,
-                                        select the option, if not, put blank</small>
+                                        select the option, if not, select "-"</small>
 
                                 </div>
 
