@@ -34,16 +34,22 @@ class ExamsController extends Controller
             return view('admin.exams.create', $data);
         }
         if(auth::user()->tipo == '2'){
+            $class=auth::user()->class;
+
             $DAM = DB::table('exams')
             ->where('course', '=', 'DAM')
+            ->where('id_class', '=', $class)
             ->get();
 
             $data['exams']=$DAM;
             return view('teacherDAM.exams.index', $data);
         }
         if(auth::user()->tipo == '3'){
+            $class=auth::user()->class;
+
             $DAM = DB::table('exams')
             ->where('course', '=', 'DAW')
+            ->where('id_class', '=', $class)
             ->get();
 
             $data['exams']=$DAM;

@@ -33,7 +33,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ url('/logout') }}">Logout</a></li>
-                    <li class="breadcrumb-item"><a href="#">User Profile</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('profile.create') }}">User Profile</a>
 
                 </ol>
             </div><!-- /.col -->
@@ -134,6 +134,8 @@
                                                     <th>Name</th>
                                                     <th>Mark</th>
                                                     <th>Course</th>
+                                                    <th>Update</th>
+                                                    <th>Delete</th>
 
                                                 </tr>
                                             </thead>

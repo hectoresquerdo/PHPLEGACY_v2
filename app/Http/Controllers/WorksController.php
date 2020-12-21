@@ -33,16 +33,20 @@ class WorksController extends Controller
             return view('admin.works.create', $data);
         }
         if(auth::user()->tipo == '2'){
+            $class=auth::user()->class;
             $DAM = DB::table('works')
             ->where('course', '=', 'DAM')
+            ->where('id_class', '=', $class)
             ->get();
 
             $data['works']=$DAM;
             return view('teacherDAM.works.index', $data);
         }
         if(auth::user()->tipo == '3'){
+            $class=auth::user()->class;
             $DAM = DB::table('works')
             ->where('course', '=', 'DAW')
+            ->where('id_class', '=', $class)
             ->get();
 
             $data['works']=$DAM;

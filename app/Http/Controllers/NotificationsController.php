@@ -12,6 +12,7 @@ class NotificationsController extends Controller
     function viewDAM(){
 
         $notification['notifications'] = Notifications::select("*")
+                                ->where('course', '=', 'DAM')
                                 ->get();
 
         return view('notifications.teacherDAM', $notification);
@@ -20,6 +21,7 @@ class NotificationsController extends Controller
     function viewDAW(){
 
         $notification['notifications']= Notifications::select("*")
+                                  ->where('course', '=', 'DAW')
                                   ->get();
 
         return view('notifications.teacherDAW', $notification);

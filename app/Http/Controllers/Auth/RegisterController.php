@@ -32,7 +32,6 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
-
     protected function redirectTo(){
         if(auth::user()->tipo == '1'){
             return '/admin';
@@ -79,6 +78,8 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:4', 'confirmed'],
             'tipo' => ['required', 'string', 'max:255'],
             'course' => ['required', 'string', 'max:255'],
+            'class' => ['required','string', 'max:255']
+
         ]);
     }
 
@@ -100,9 +101,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'tipo' => $data['tipo'],
+            'class' => $data['class']
+
         ]);
-
-
     }
-
 }

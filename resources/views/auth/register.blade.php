@@ -114,18 +114,16 @@
                                 <label for="tipo" class="col-md-4 col-form-label text-md-right">User Type</label>
 
                                 <div class="col-md-6">
-                                    <input list="usertypes" min="2" max="5" id="tipo" type="text" class="form-control"
-                                        name="tipo" value="{{ old('tipo') }}" required>
-                                    <datalist id="usertypes">
+                                    <select min="2" max="5" id="tipo" type="text" class="form-control" name="tipo"
+                                        value="{{ old('tipo') }}" required>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
 
-                                        <option value="2">
-                                        <option value="3">
-                                        <option value="4">
-                                        <option value="5">
-
-
-                                    </datalist>
-
+                                    </select>
+                                    <small id="emailHelp" class="form-text text-muted">2-TeacherDAM, 3-TeacherDAW,
+                                        4-StudentDAM, 5-StudentDAW</small>
 
                                 </div>
 
@@ -134,19 +132,36 @@
                                 <label for="course" class="col-md-4 col-form-label text-md-right">Course</label>
 
                                 <div class="col-md-6">
-                                    <input list="course" id="course" type="text" class="form-control" name="course"
+                                    <select id="course" type="text" class="form-control" name="course"
                                         value="{{ old('course') }}" required>
-                                    <datalist id="course">
+                                        <option>DAM</option>
+                                        <option>DAW</option>
 
-                                        <option value="DAM">
-                                        <option value="DAW">
-
-                                    </datalist>
+                                    </select>
 
 
                                 </div>
 
                             </div>
+                            <div class="form-group row">
+                                <label for="class" class="col-md-4 col-form-label text-md-right">Class:</label>
+
+                                <div class="col-md-6">
+                                    <select id="class" type="text" class="form-control" name="class"
+                                        value="{{ old('class') }}" required>
+                                        <option></option>
+                                        <option>PHP</option>
+                                        <option>JAVA</option>
+                                        <option>BBDD</option>
+                                        <option>ZOCALOS</option>
+                                    </select>
+                                    <small id="emailHelp" class="form-text text-muted">In case that you are a teacher,
+                                        select the option, if not, put blank</small>
+
+                                </div>
+
+                            </div>
+
 
                             <div class="form-group row">
                                 <label for="password"

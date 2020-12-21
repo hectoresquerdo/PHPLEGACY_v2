@@ -136,6 +136,8 @@
                                                         <th>Name</th>
                                                         <th>Mark</th>
                                                         <th>Course</th>
+                                                        <th>Update</th>
+                                                        <th>Delete</th>
 
                                                     </tr>
                                                 </thead>

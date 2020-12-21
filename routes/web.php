@@ -11,8 +11,6 @@ use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\UserSettingController;
 use App\Http\Controllers\NotificationsController;
-
-//use App\Http\Controllers\MailController;
 use App\Mail\EvaluationMail;
 use Illuminate\Support\Facades\Mail;
 
@@ -97,3 +95,4 @@ Route::get('/sendMail', function(){
     Mail::to("hector.evalverde@gmail.com")->send($correo);
     return redirect()->back();
 });
+
