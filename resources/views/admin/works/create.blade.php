@@ -72,6 +72,8 @@
                                     <th>Id_Student</th>
                                     <th>Name</th>
                                     <th>Mark</th>
+                                    <th>Update</th>
+                                    <th>Delete</th>
 
                                 </tr>
                             </thead>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Students;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -89,7 +90,7 @@ class StudentsController extends Controller
      */
     public function edit($id)
     {
-        $student= Users::findOrFail($id);
+        $student= User::findOrFail($id);
 
         if(auth::user()->tipo == '1'){
             return view('admin.students.edit', compact('student'));
@@ -107,9 +108,9 @@ class StudentsController extends Controller
     public function update(Request $request, $id)
     {
         $dataStudents=request()->except(['_token', '_method']);
-        Users::where('id','=',$id )->update($dataStudents);
+        User::where('id','=',$id )->update($dataStudents);
 
-        $student= Users::findOrFail($id);
+        $student= User::findOrFail($id);
         return redirect()->route('students.edit');
     }
 
@@ -121,7 +122,7 @@ class StudentsController extends Controller
      */
     public function destroy($id)
     {
-        Users::destroy($id);
+        User::destroy($id);
 
         return redirect('/admin/students/create');
     }

@@ -64,18 +64,7 @@
                                         <td>{{ $student->nif }}</td>
                                         <td>{{ $student->course }}</td>
 
-                                        <td>
-                                            <a class="btn btn-secondary"
-                                                href="{{ url('/admin/students/' . $student->id . '/edit') }}"> Modify</a>
-                                        </td>
-                                        <td>
-                                            <form method="post" action="{{ url('/admin/students/' . $student->id) }}">
-                                                {{ csrf_field() }}
-                                                {{ method_field('DELETE') }}
-                                                <button type="submit" class="btn btn-danger"
-                                                    onclick="return confirm('Do you want to delete this register?');">Delete</button>
-                                            </form>
-                                        </td>
+
 
                                     </tr>
                                 @endforeach
